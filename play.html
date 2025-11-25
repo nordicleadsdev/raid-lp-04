@@ -6,6 +6,46 @@
     <title>Epic Mobile Strategy Game</title>
     <meta name="robots" content="noindex, nofollow">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Voluum Tracking Script -->
+    <meta http-equiv="delegate-ch" content="sec-ch-ua https://trk.play4free.net; sec-ch-ua-mobile https://trk.play4free.net; sec-ch-ua-arch https://trk.play4free.net; sec-ch-ua-model https://trk.play4free.net; sec-ch-ua-platform https://trk.play4free.net; sec-ch-ua-platform-version https://trk.play4free.net; sec-ch-ua-bitness https://trk.play4free.net; sec-ch-ua-full-version-list https://trk.play4free.net; sec-ch-ua-full-version https://trk.play4free.net"><style>.dtpcnt{opacity: 0;}</style>
+    <script>
+    (function(e,d,k,n,u,v,g,w,C,f,p,x,D,c,q,r,h,t,y,G,z){function A(){for(var a=d.querySelectorAll(".dtpcnt"),b=0,l=a.length;b<l;b++)a[b][w]=a[b][w].replace(/(^|\s+)dtpcnt($|\s+)/g,"")}function E(a,b,l,F){var m=new Date;m.setTime(m.getTime()+(F||864E5));d.cookie=a+"="+b+"; "+l+"samesite=Strict; expires="+m.toGMTString()+"; path=/";k.setItem(a,b);k.setItem(a+"-expires",m.getTime())}function B(a){var b=d.cookie.match(new RegExp("(^| )"+a+"=([^;]+)"));return b?b.pop():k.getItem(a+"-expires")&&+k.getItem(a+
+"-expires")>(new Date).getTime()?k.getItem(a):null}z="https:"===e.location.protocol?"secure; ":"";e[f]||(e[f]=function(){(e[f].q=e[f].q||[]).push(arguments)},r=d[u],d[u]=function(){r&&r.apply(this,arguments);if(e[f]&&!e[f].hasOwnProperty("params")&&/loaded|interactive|complete/.test(d.readyState))for(;c=d[v][p++];)/\/?click\/?($|(\/[0-9]+)?$)/.test(c.pathname)&&(c[g]="javascrip"+e.postMessage.toString().slice(4,5)+":"+f+'.l="'+c[g]+'",void 0')},setTimeout(function(){(t=RegExp("[?&]cpid(=([^&#]*)|&|#|$)").exec(e.location.href))&&
+t[2]&&(h=t[2],y=B("vl-"+h));var a=B("vl-cep"),b=location[g];if("savedCep"===D&&a&&(!h||"undefined"===typeof h)&&0>b.indexOf("cep=")){var l=-1<b.indexOf("?")?"&":"?";b+=l+a}c=d.createElement("script");q=d.scripts[0];c.defer=1;c.src=x+(-1===x.indexOf("?")?"?":"&")+"lpref="+n(d.referrer)+"&lpurl="+n(b)+"&lpt="+n(d.title)+"&vtm="+(new Date).getTime()+(y?"&uw=no":"");c[C]=function(){for(p=0;c=d[v][p++];)/dtpCallback\.l/.test(c[g])&&(c[g]=decodeURIComponent(c[g]).match(/dtpCallback\.l="([^"]+)/)[1]);A()};
+q.parentNode.insertBefore(c,q);h&&E("vl-"+h,"1",z)},0),setTimeout(A,7E3))})(window,document,localStorage,encodeURIComponent,"onreadystatechange","links","href","className","onerror","dtpCallback",0,"https://trk.play4free.net/d/.js","savedCep");
+    </script>
+    <noscript><link href="https://trk.play4free.net/d/.js?noscript=true&lpurl=" rel="stylesheet"/></noscript>
+
+    <!-- Outbrain Tracking Script -->
+    <script data-obct type="text/javascript">
+    /** DO NOT MODIFY THIS CODE**/
+    !function(_window, _document) {
+      var OB_ADV_ID = '00bca054c34ea1b2a7c5d406894c17e03b';
+      if (_window.obApi) {
+        var toArray = function(object) {
+          return Object.prototype.toString.call(object) === '[object Array]' ? object : [object];
+        };
+        _window.obApi.marketerId = toArray(_window.obApi.marketerId).concat(toArray(OB_ADV_ID));
+        return;
+      }
+      var api = _window.obApi = function() {
+        api.dispatch ? api.dispatch.apply(api, arguments) : api.queue.push(arguments);
+      };
+      api.version = '1.1';
+      api.loaded = true;
+      api.marketerId = OB_ADV_ID;
+      api.queue = [];
+      var tag = _document.createElement('script');
+      tag.async = true;
+      tag.src = '//amplify.outbrain.com/cp/obtp.js';
+      tag.type = 'text/javascript';
+      var script = _document.getElementsByTagName('script')[0];
+      script.parentNode.insertBefore(tag, script);
+    }(window, document);
+
+    obApi('track', 'PAGE_VIEW');
+    </script>
     <style>
         * {
             margin: 0;
@@ -375,6 +415,10 @@
     </style>
 </head>
 <body>
+    <!-- AFK Click Tracking -->
+    <script>AFKClickUrl="https://trk.play4free.net/click";</script>
+    <script async src="https://trk.play4free.net/hp"></script>
+
     <div class="background-overlay"></div>
     <div id="particles-js"></div>
     
@@ -689,10 +733,11 @@
             }, 3000);
         }
 
-        // Redirect logic - replace with your actual outbound link
+        // Redirect logic - uses URL parameter or default tracking link
         function redirectToGame() {
-            const yourOutboundLink = "https://your-actual-game-link.com";
-            window.location.href = yourOutboundLink;
+            const urlParams = new URLSearchParams(window.location.search);
+            const clickUrl = urlParams.get('url') || 'https://trk.play4free.net/click';
+            window.location.href = clickUrl;
         }
 
         // Handle legal link clicks
