@@ -187,17 +187,6 @@
             window.location.href = clickUrl;
         }
 
-        // Handle legal link clicks
-        function openLegal(type) {
-            const urls = {
-                'imprint': 'legal/imprint.html',
-                'terms': 'legal/terms.html', 
-                'privacy': 'legal/privacy.html'
-            };
-            
-            window.open(urls[type], '_blank', 'noopener,noreferrer');
-        }
-
         // Button click handler using event delegation
         function handleButtonClick(event) {
             const button = event.target.closest('.quiz-button');
