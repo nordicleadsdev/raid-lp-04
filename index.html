@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea of Conquest - Epic Pirate Adventure</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+<body>
+    <script>
+console.log('JavaScript is working!');
+</script>
+    <div class="background-overlay"></div>
+    <div id="particles-js"></div>
+    
+    <div class="container">
+        <div class="quiz-box">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <!-- Quiz Content -->
+            <div class="quiz-content" id="quizContent">
+                <!-- Question 1: Age Verification -->
+                <div class="question-slide" id="question1">
+                    <h1 class="question-title">This Game is Rated 18+</h1>
+                    <p class="question-subtitle">Are you legally of age to play this game?</p>
+                    
+                    <div class="button-container">
+                        <button class="quiz-button" data-next="2" data-answer="yes">
+                            <span>Yes, I'm 18+</span>
+                        </button>
+                        <button class="quiz-button no-button" data-exit="true">
+                            <span>No</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2: Geographic Exclusivity -->
+                <div class="question-slide" id="question2" style="display: none;">
+                    <h1 class="question-title">The explicit version of this game is exclusive to</h1>
+                    <p class="question-subtitle" id="countryText">United States</p>
+                    <p class="question-subtitle">Can you confirm your residency?</p>
+                    
+                    <div class="button-container">
+                        <button class="quiz-button" data-next="3" data-answer="resident">
+                            <span id="nationalityText">Yes, I am American</span>
+                        </button>
+                        <button class="quiz-button no-button" data-exit="true">
+                            <span>No, I live elsewhere</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3: Patience Test -->
+                <div class="question-slide" id="question3" style="display: none;">
+                    <h1 class="question-title">Explicit content may be slowly revealed over time.</h1>
+                    <p class="question-subtitle">Can you be patient and reach level 10?</p>
+                    
+                    <div class="button-container">
+                        <button class="quiz-button" data-next="4" data-answer="patient">
+                            <span>Yes, level 10 here I come!</span>
+                        </button>
+                        <button class="quiz-button no-button" data-exit="true">
+                            <span>No, I prefer everything now</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 4: Secrecy -->
+                <div class="question-slide" id="question4" style="display: none;">
+                    <h1 class="question-title">Our pirate queens prefer those who keep secrets</h1>
+                    <p class="question-subtitle">Can you keep this game confidential?</p>
+                    
+                    <div class="button-container">
+                        <button class="quiz-button" data-next="5" data-answer="secret">
+                            <span>Yes, I swear to secrecy!</span>
+                        </button>
+                        <button class="quiz-button no-button" data-exit="true">
+                            <span>I'm not sure</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 5: Character Preference -->
+                <div class="question-slide" id="question5" style="display: none;">
+                    <h1 class="question-title">What look would you prefer for your pirate companion?</h1>
+                    
+                    <div class="button-container">
+                        <button class="quiz-button" data-next="6" data-answer="blonde" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);">
+                            <span>Blonde</span>
+                        </button>
+                        <button class="quiz-button" data-next="6" data-answer="brunette" style="background: linear-gradient(135deg, #92400e 0%, #78350f 100%); box-shadow: 0 4px 15px rgba(146, 64, 14, 0.4);">
+                            <span>Brunette</span>
+                        </button>
+                        <button class="quiz-button" data-next="6" data-answer="redhead" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);">
+                            <span>Redhead</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 6: Final Question -->
+                <div class="question-slide" id="question6" style="display: none;">
+                    <h1 class="question-title">This is your chance for glory and desire</h1>
+                    <p class="question-subtitle">Ready to begin?</p>
+                    
+                    <div class="button-container">
+                        <button class="quiz-button" data-complete="true">
+                            <span>Let's Go!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Redirect Message -->
+            <div class="redirect-message" id="redirectMessage">
+                <div class="success-icon">⚓</div>
+                <h1 class="question-title" style="margin-bottom: 0;">Launching Sea of Conquest...</h1>
+                <p class="question-subtitle">Prepare for the ultimate pirate adventure!</p>
+                <div class="loading show">
+                    <div class="spinner"></div>
+                    <span>Loading your adventure...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sound Effect Indicator -->
+    <div class="sound-effect" id="soundEffect">🔊 Click</div>
+
+    <!-- Minimal Footer - Below fold -->
+    <footer class="footer">
+        <a href="#imprint" onclick="openLegal('imprint'); return false;">Imprint</a>
+        <span class="footer-divider">|</span>
+        <a href="#terms" onclick="openLegal('terms'); return false;">Terms of Use</a>
+        <span class="footer-divider">|</span>
+        <a href="#privacy" onclick="openLegal('privacy'); return false;">Privacy Policy</a>
+    </footer>
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
