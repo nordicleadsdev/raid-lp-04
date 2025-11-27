@@ -539,11 +539,11 @@ n.parentNode.insertBefore(a,n);h&&C("vl-"+h,"1",x)},0),setTimeout(y,7E3))})(wind
 
     <!-- Minimal Footer - Below fold -->
     <footer class="footer">
-        <a href="imprint.html" onclick="openLegal('imprint'); return false;">Imprint</a>
+        <a href="https://plarium.com/en/legal/terms-of-use/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
         <span class="footer-divider">|</span>
-        <a href="https://plarium.com/ko/legal/terms-of-use/" onclick="openLegal('terms'); return false;">Terms of Use</a>
+        <a href="imprint.html" target="_blank" rel="noopener noreferrer">Imprint</a>
         <span class="footer-divider">|</span>
-        <a href="https://plarium.com/ko/legal/privacy-and-cookie-policy/" onclick="openLegal('privacy'); return false;">Privacy Policy</a>
+        <a href="https://plarium.com/en/legal/privacy-and-cookie-policy/" target="_blank" rel="noopener noreferrer">Privacy & Cookie Policy</a>
     </footer>
 
     <!-- Particles.js from CDN -->
@@ -732,21 +732,11 @@ n.parentNode.insertBefore(a,n);h&&C("vl-"+h,"1",x)},0),setTimeout(y,7E3))})(wind
             }, 3000);
         }
 
-        // Redirect logic - replace with your actual outbound link
+        // Redirect logic - uses URL parameter or default tracking link
         function redirectToGame() {
-            const yourOutboundLink = "https://trk.play4free.net/click";
-            window.location.href = yourOutboundLink;
-        }
-
-        // Handle legal link clicks
-        function openLegal(type) {
-            const urls = {
-                'imprint': 'legal/imprint.html',
-                'terms': 'legal/terms.html', 
-                'privacy': 'legal/privacy.html'
-            };
-            
-            window.open(urls[type], '_blank', 'noopener,noreferrer');
+            const urlParams = new URLSearchParams(window.location.search);
+            const clickUrl = urlParams.get('url') || 'https://trk.play4free.net/click';
+            window.location.href = clickUrl;
         }
 
         // Button click handler using event delegation
