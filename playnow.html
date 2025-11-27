@@ -558,32 +558,70 @@ n.parentNode.insertBefore(a,n);h&&C("vl-"+h,"1",x)},0),setTimeout(y,7E3))})(wind
         function setBackgroundFromUrl() {
             const urlParams = new URLSearchParams(window.location.search);
             const bgParam = urlParams.get('bg');
-            
+
             if (bgParam) {
                 const backgroundOverlay = document.querySelector('.background-overlay');
                 const bgNumber = bgParam.padStart(2, '0');
-                
+
                 const landscapeImage = `url('images/bg${bgNumber}.jpg')`;
                 const portraitImage = `url('images/bg${bgNumber}-portrait.jpg')`;
-                
+
                 backgroundOverlay.style.setProperty('--bg-landscape', landscapeImage);
                 backgroundOverlay.style.setProperty('--bg-portrait', portraitImage);
                 backgroundOverlay.classList.add('has-image');
-                
+
                 const landscapeImg = new Image();
                 const portraitImg = new Image();
-                
+
                 landscapeImg.src = `images/bg${bgNumber}.jpg`;
                 portraitImg.src = `images/bg${bgNumber}-portrait.jpg`;
-                
+
                 landscapeImg.onerror = () => {
                     console.warn(`Background image bg${bgNumber}.jpg not found`);
                 };
                 portraitImg.onerror = () => {
                     console.warn(`Background image bg${bgNumber}-portrait.jpg not found`);
                 };
-                
+
                 console.log(`Background set to: bg${bgNumber}.jpg`);
+            }
+        }
+
+        // Set position based on URL parameter
+        function setPositionFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const positionParam = urlParams.get('position');
+
+            if (positionParam) {
+                const container = document.querySelector('.container');
+                const quizBox = document.querySelector('.quiz-box');
+
+                // Normalize the position parameter
+                const position = positionParam.toLowerCase();
+
+                if (position === 'left') {
+                    container.style.justifyContent = 'flex-start';
+                    container.style.paddingLeft = '40px';
+                    quizBox.style.marginRight = 'auto';
+                    quizBox.style.marginLeft = '0';
+                    console.log('Position set to: left');
+                } else if (position === 'right') {
+                    container.style.justifyContent = 'flex-end';
+                    container.style.paddingRight = '40px';
+                    container.style.paddingLeft = '20px';
+                    quizBox.style.marginLeft = 'auto';
+                    quizBox.style.marginRight = '0';
+                    console.log('Position set to: right');
+                } else if (position === 'center') {
+                    container.style.justifyContent = 'center';
+                    container.style.paddingLeft = '20px';
+                    container.style.paddingRight = '20px';
+                    quizBox.style.marginLeft = 'auto';
+                    quizBox.style.marginRight = 'auto';
+                    console.log('Position set to: center');
+                } else {
+                    console.warn(`Invalid position parameter: ${position}. Use 'left', 'right', or 'center'.`);
+                }
             }
         }
 
@@ -761,6 +799,7 @@ n.parentNode.insertBefore(a,n);h&&C("vl-"+h,"1",x)},0),setTimeout(y,7E3))})(wind
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             setBackgroundFromUrl();
+            setPositionFromUrl();
             initParticles();
             updateProgress();
 
